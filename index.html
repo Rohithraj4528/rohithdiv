@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Divya ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🌌 Animated Background */
+body{
+margin:0;
+overflow:hidden;
+font-family:Poppins,sans-serif;
+color:white;
+background: radial-gradient(circle at top,#1a001f,#000010);
+}
+
+/* ⭐ Stars */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:transparent;
+overflow:hidden;
+z-index:0;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite ease-in-out;
+opacity:0.6;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:0.2; transform:scale(1);}
+50%{opacity:1; transform:scale(1.5);}
+}
+
+/* ❤️ Floating Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+color:#ff4d88;
+font-size:20px;
+animation:floatUp 6s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0) scale(1); opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh) scale(1.5); opacity:0;}
+}
+
+/* 🌙 Main Box */
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+z-index:2;
+width:90%;
+max-width:700px;
+}
+
+/* 💖 Title */
+h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+margin-bottom:10px;
+text-shadow:0 0 20px #ff4d88;
+animation:fadeIn 2s ease-in;
+}
+
+/* ✍️ Type text */
+#typing{
+font-size:22px;
+margin-top:20px;
+min-height:60px;
+}
+
+/* 💌 Button */
+.btn{
+margin-top:40px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(45deg,#ff4d88,#ff99cc);
+color:white;
+box-shadow:0 0 20px #ff4d88;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px #ff4d88;
+}
+
+/* ✨ Fade */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(-20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 🌌 Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- ❤️ Hearts -->
+<div id="hearts"></div>
+
+<div class="container">
+
+<h1>Hi Divya ❤️</h1>
+
+<div id="typing"></div>
+
+<a href="story.html">
+<button class="btn">Enter Our Love Story ❤️</button>
+</a>
+
+</div>
+
+<script>
+
+/* ⭐ Generate Stars */
+const starContainer = document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(Math.random()*3+1)+"s";
+starContainer.appendChild(star);
+}
+
+/* ❤️ Floating Hearts */
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,300);
+
+/* ✍️ Typewriter Effect */
+const text = "It's your man... The one who loves you more than his world, more than himself. Welcome to our story ❤️";
+let i=0;
+
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(type,50);
+}
+}
+
+type();
+
+</script>
+
+</body>
+</html>

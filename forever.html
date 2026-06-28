@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forever ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🌌 Background */
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+background: radial-gradient(circle at top,#0b0014,#000000);
+overflow:hidden;
+color:white;
+}
+
+/* ❤️ Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+color:#ff4d88;
+font-size:18px;
+animation:floatUp 6s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0); opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh); opacity:0;}
+}
+
+/* 🎆 Fireworks canvas */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+
+/* 💍 Main Card */
+.container{
+position:relative;
+z-index:2;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.card{
+max-width:850px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+padding:40px;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,77,136,0.3);
+animation:fadeIn 2s ease;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+color:#ff99cc;
+text-shadow:0 0 25px #ff4d88;
+margin-bottom:20px;
+}
+
+p{
+font-size:20px;
+line-height:1.9;
+}
+
+.quote{
+margin:25px 0;
+font-size:26px;
+font-weight:bold;
+color:#ffe6f0;
+}
+
+.btn{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff4d88,#ff99cc);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Forever Begins With Us ❤️</h1>
+
+<p>
+Divya...
+</p>
+
+<p>
+From the moment you came into my life,
+everything changed beautifully.
+You became my peace, my happiness, and my reason to smile.
+</p>
+
+<p>
+I don’t want just moments with you…
+I want a lifetime.
+Every sunrise, every sunset, every heartbeat — with you.
+</p>
+
+<p>
+I know life may bring challenges,
+but I don’t want to face anything alone…
+I want to face everything with you by my side.
+</p>
+
+<div class="quote">
+"I don’t need the world…
+I just need you."
+</div>
+
+<p>
+Let’s build a life together filled with love, respect, and trust.
+Let’s convince everyone with patience and care,
+and choose our happiness together.
+</p>
+
+<h2 style="margin-top:20px;">
+Will you stay with me… forever? 💍❤️
+</h2>
+
+<button class="btn" onclick="showLove()">
+Click Me ❤️
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* ❤️ Hearts */
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(14+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,300);
+
+/* 💖 Message */
+function showLove(){
+alert("❤️ I love you Divya ❤️\n\nNo matter what happens, I will always choose you.\nForever and always.");
+}
+
+/* 🎆 Fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+function Particle(x,y,color){
+this.x=x;
+this.y=y;
+this.color=color;
+this.radius=Math.random()*3+2;
+this.dx=(Math.random()-0.5)*6;
+this.dy=(Math.random()-0.5)*6;
+this.life=100;
+}
+
+function createFirework(){
+let x=Math.random()*canvas.width;
+let y=Math.random()*canvas.height/2;
+
+let colors=["#ff4d88","#ff99cc","#ffffff","#ff66b2"];
+
+for(let i=0;i<30;i++){
+particles.push(new Particle(x,y,colors[Math.floor(Math.random()*colors.length)]));
+}
+}
+
+function animate(){
+ctx.fillStyle="rgba(0,0,0,0.2)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,i)=>{
+p.x+=p.dx;
+p.y+=p.dy;
+p.life--;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fillStyle=p.color;
+ctx.fill();
+
+if(p.life<=0) particles.splice(i,1);
+});
+
+requestAnimationFrame(animate);
+}
+
+setInterval(createFirework,800);
+animate();
+
+</script>
+
+</body>
+</html>

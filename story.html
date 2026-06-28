@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Love Story ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* 🌌 Background */
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+background: radial-gradient(circle at top,#1a001f,#000010);
+color:white;
+overflow-x:hidden;
+}
+
+/* ❤️ Hearts */
+.heart{
+position:fixed;
+bottom:-20px;
+color:#ff4d88;
+font-size:18px;
+animation:floatUp 6s linear infinite;
+opacity:0.7;
+z-index:0;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0); opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-110vh); opacity:0;}
+}
+
+/* 📖 Container */
+.container{
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+position:relative;
+z-index:2;
+}
+
+/* 💖 Title */
+h1{
+text-align:center;
+font-size:60px;
+font-family:'Great Vibes',cursive;
+text-shadow:0 0 20px #ff4d88;
+animation:fadeIn 1.5s ease;
+}
+
+/* 📦 Card */
+.card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:30px;
+margin:30px 0;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,77,136,0.3);
+transform:translateY(50px);
+opacity:0;
+transition:all 1s ease;
+}
+
+/* ✨ Show on scroll */
+.card.show{
+transform:translateY(0);
+opacity:1;
+}
+
+/* 💌 Text */
+.card h2{
+color:#ff99cc;
+margin-bottom:10px;
+}
+
+.card p{
+line-height:1.8;
+font-size:18px;
+}
+
+/* ✨ Fade */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(-20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Our Love Story ❤️</h1>
+
+<div class="card">
+<h2>🌹 How u Proposed</h2>
+<p>
+I still remember the moment I decided to tell you how much I love you.  
+When u experess ur feelings to me that one word how u say that makes me more
+special , 
+My heart was racing… my hands were shaking…  
+But my feelings for you were stronger than my fear.  
+When I finally told you, everything around me stopped.  
+That moment became the most beautiful memory of my life. ❤️
+</p>
+</div>
+
+<div class="card">
+<h2>💖 Your Reaction</h2>
+<p>
+Your smile… your text… your silence…  
+It felt like the world finally made sense.  
+I didn’t need anything else in that moment.  
+Just you being there was enough for me. ❤️
+</p>
+</div>
+
+<div class="card">
+<h2>🤝 Our Promise</h2>
+<p>
+We promised to stay together in every situation.  
+To support each other.  
+To never leave each other’s side.  
+To grow together, learn together, and love endlessly. ❤️
+</p>
+</div>
+
+<div class="card">
+<h2>💌 My Message To You</h2>
+<p>
+Divya…  
+No one in this world can ever replace you in my heart.  
+You are my peace, my happiness, and my forever.  
+I don’t just love you… I choose you every single day. ❤️
+</p>
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+<a href="memories.html">
+<button class="btn">Our Memories ❤️</button>
+</a>
+</div>
+
+</div>
+
+<script>
+
+/* ❤️ Floating Hearts */
+function createHeart(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(14+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,300);
+
+/* ✨ Scroll Animation */
+const cards=document.querySelectorAll(".card");
+
+function showCards(){
+cards.forEach(card=>{
+let top=card.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+card.classList.add("show");
+}
+});
+}
+
+window.addEventListener("scroll",showCards);
+showCards();
+
+</script>
+
+</body>
+</html>
